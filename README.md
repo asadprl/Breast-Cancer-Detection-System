@@ -5,3 +5,5 @@ A CNN based model will be used to classify images into 3 classes
 1. benign
 2. malignant
 3. normal
+
+flask will be used to implement a web based interface
