@@ -8,6 +8,9 @@
         <title>Test HTML</title>
     </head>
     <body>
+        <div class="logout">
+            <a href="{{ url_for('auth.logout') }}"><i class="" aria-hidden="true"></i>Logout</a> 
+        </div>
         <h1>hello {{greet}}!</h1>
     </body>
 </html>

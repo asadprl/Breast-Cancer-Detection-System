@@ -16,6 +16,5 @@ app.register_blueprint(auth_blueprint)
 
 
 from web import views, models
-from web.auth import models
 with app.app_context():
     db.create_all()

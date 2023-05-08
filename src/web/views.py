@@ -5,6 +5,6 @@ from flask_login import current_user
 @app.route('/')
 def index():
     if current_user.is_authenticated:
-        return render_template('index.html', greet=current_user.username)
+        return render_template('index.html', greet=current_user.full_name)
     else:
         return redirect(url_for('auth.login'))
