@@ -8,22 +8,16 @@ from werkzeug.urls import url_parse
 from datetime import datetime
 
 @auth.route('/register', methods=['GET', 'POST'])
-@login_required
+# @login_required
 def register():
     # if current_user.is_authenticated:
     #     return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        print(form.role)
-        user = User(id=None,
-                    username=form.username.data.lower(),
+        user = User(username=form.username.data.lower(),
                     full_name=form.full_name.data,
                     password=form.password.data,
-                    role=form.role.data,
-                    created_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    created_by=current_user.id,
-                    updated_at=None,
-                    updated_by=None
+                    role_id=form.role.data
                     )
         # user.set_password(form.password.data)
         db.session.add(user)
@@ -37,7 +31,7 @@ def register():
 def login():
     nologin = False
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -48,7 +42,7 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
-                next_page = url_for('index')
+                next_page = url_for('main.index')
             return redirect(next_page)
     return render_template('login.html', title='Login', form=form, message=nologin)
 
