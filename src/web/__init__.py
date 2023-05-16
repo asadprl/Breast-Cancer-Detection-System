@@ -1,7 +1,6 @@
 from flask import Flask
 from config import config
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_login import LoginManager
 
 db = SQLAlchemy()
@@ -25,6 +24,25 @@ def create_app(config_name:str):
     
     __register_blueprints(app)
     
-    
+    __create_roles_and_users(app)
     return app
+
+def __create_roles_and_users(app):
+    from web.models import User, Role, Permission
+    with app.app_context():
+        if User.query.filter(User.username=='admin') is None:
+            db.create_all()
+            p_add_user = Permission(title='add_user')
+            p_edit_user = Permission(title='edit_user')
+            db.session.add(p_add_user)
+            db.session.add(p_edit_user)
+            db.session.commit()
+            admin_role = Role(title='admin')
+            admin_role.permissions.append(p_add_user)
+            admin_role.permissions.append(p_edit_user)
+            db.session.add(admin_role)
+            db.session.commit()
+            admin = User(username='admin', full_name='Administrator', password='123', role_id=admin_role.id)
+            db.session.add(admin)
+            db.session.commit()
     

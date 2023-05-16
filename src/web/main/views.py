@@ -3,6 +3,7 @@ from flask_login import current_user
 from . import main
 from .. import db
 
+
 @main.route('/')
 def index():
-    return current_user.full_name
+    return render_template('index.html')

@@ -15,6 +15,8 @@ class RegistrationForm(FlaskForm):
     full_name = StringField('Full Name', validators=[DataRequired(), Length(1,128)])
     password = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+    
+    ## TODO: get choices from database
     role = SelectField('Role', choices=[('1','Admin'), ('2','Data Engineer'), ('3','Doctor')])
     submit = SubmitField('Register')
 

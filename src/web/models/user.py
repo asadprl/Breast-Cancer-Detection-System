@@ -1,11 +1,11 @@
 from web import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from datetime import datetime
 
 
 class User(UserMixin, db.Model):
     __tablename__ = 'tbl_users'
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
     full_name = db.Column(db.String(64), nullable=False)
