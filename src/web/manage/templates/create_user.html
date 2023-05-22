@@ -11,7 +11,7 @@
     <form action="" method="post" class="p-3 border border-2">
         {{ form.hidden_tag() }}
         <div class="Register-Header">
-            <h4 class="has-text-centered mb-5 is-size-3">Register</h4>
+            <h4 class="has-text-centered mb-5 is-size-3">Create New User</h4>
         </div>
 
         <p>
@@ -50,9 +50,5 @@
             {{ form.submit(class="btn btn-primary mt-3") }}
         </div>
     </form>
-    <div class="registered">
-        <span>Already registered?</span> 
-        <a href="{{ url_for('auth.login') }}"><i class="fa fa-hand-o-right" aria-hidden="true"></i>Login</a> 
-    </div>
 </div>
 {% endblock %}

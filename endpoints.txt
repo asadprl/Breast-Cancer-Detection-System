@@ -1,0 +1,60 @@
+/
+login
+
+=====================
+authenticated
+=====================
+main
+logout
+
+=====================
+datascientist
+=====================
+datasets
+	create
+	edit
+	view
+	delete
+	
+	<dataset>/
+		add_images
+		delete_images
+
+models
+	create
+	edit
+	view
+	delete
+	
+	<model>/
+		train
+		test
+		evaluate
+
+reports
+
+=======================
+sysadmin
+=======================
+users
+	create
+	edit
+	view
+	delete
+
+roles
+	create
+	edit
+	view
+	delete
+	
+	<role>/
+		add_permissions
+
+permissions
+
+
+========================
+datascientist, doctor
+========================	
+predict

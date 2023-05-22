@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<a class="brand-logo" href="{{ url_for('main.index') }}">
+    <div class="brand-logo-name"><strong> BCDS </strong> </div>
+</a>
+
+<div class="register">
+    <form action="" method="post" class="p-3 border border-2">
+        {{ form.hidden_tag() }}
+        <div class="Register-Header">
+            <h4 class="has-text-centered mb-5 is-size-3">Create New Role</h4>
+        </div>
+
+        <p>
+            {{ form.title.label(class="label") }}<br>
+            {{ form.title(size=32) }}<br>
+            {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label(class="label") }}<br>
+            {{ form.description(size=32) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        
+        <div class="registerbtn">
+            {{ form.submit(class="btn btn-primary mt-3") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

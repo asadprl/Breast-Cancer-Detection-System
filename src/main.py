@@ -1,9 +1,9 @@
-from web import create_app, db
+from web import create_app
 from flask_migrate import Migrate
 import os
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
-migrate = Migrate(app, db)
+# migrate = Migrate(app, db)
 
 @app.cli.command()
 def test():

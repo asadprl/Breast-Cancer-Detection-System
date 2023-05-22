@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Roles </h1> <a name="" id="" class="btn btn-primary" href="{{url_for("manage.create_role")}}" role="button">Create New Role</a>
+<table class="table table-striped table-responsive">
+        <thead class="thead-inverse">
+                <tr>
+                        <th>Id</th>
+                        <th>Role title</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for role in roles %}
+                        <tr>
+                                <td scope="row">{{ role.id }}</td>
+                                <td>{{ role.title }}</td>
+                                <td>{{ role.description }}</td>
+                                <td>
+                                        <a name="" id="" class="btn btn-secondary" href="{{url_for("manage.edit_role", role=role.title)}}" role="button">Edit</a>
+                                        <a name="" id="" class="btn btn-secondary" href="{{url_for("manage.delete_role", role=role.title)}}" role="button">Delete</a>
+                                        
+                                </td>
+                        </tr>
+                        {% endfor %}
+                </tbody>
+</table>
+{% endblock %}

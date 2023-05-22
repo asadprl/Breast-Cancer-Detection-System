@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<a class="brand-logo" href="{{ url_for('main.index') }}">
+    <div class="brand-logo-name"><strong> BCDS </strong> </div>
+</a>
+
+<div class="register">
+    <form action="" method="post" class="p-3 border border-2">
+        {{ form.hidden_tag() }}
+        <div class="Register-Header">
+            <h4 class="has-text-centered mb-5 is-size-3">Edit User</h4>
+        </div>
+
+        <p>
+            {{ form.username.label(class="label") }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.full_name.label(class="label") }}<br>
+            {{ form.full_name(size=32) }}<br>
+            {% for error in form.full_name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label(class="label") }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label(class="label") }}<br>
+            {{ form.password2(size=32) }}<br>
+            {% for error in form.password2.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.role.label(class="label") }}<br>
+            {{ form.role(style='width: 100%') }}<br>
+        </p>
+        <div class="registerbtn">
+            {{ form.submit(class="btn btn-primary mt-3") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

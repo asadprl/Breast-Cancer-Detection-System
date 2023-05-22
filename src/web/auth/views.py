@@ -1,31 +1,11 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, redirect, url_for, request
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
-from .forms import RegistrationForm, LoginForm
+from .forms import LoginForm
 from web.models import User
 from .. import db
 from werkzeug.urls import url_parse
 from datetime import datetime
-
-@auth.route('/register', methods=['GET', 'POST'])
-# @login_required
-def register():
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('index'))
-    form = RegistrationForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data.lower(),
-                    full_name=form.full_name.data,
-                    password=form.password.data,
-                    role_id=form.role.data
-                    )
-        # user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('auth.login'))
-
-    return render_template('register.html', title='Register', form=form)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
